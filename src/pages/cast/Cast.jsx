@@ -4,16 +4,14 @@ import Notiflix from 'notiflix';
 import { useParams } from 'react-router-dom';
 import { CastList } from './Cast-styled';
 
- export const Cast = () => {
+export default function Cast() {
   const [castsList, setCastsList] = useState([]);
   const { movieId } = useParams();
-
 
   useEffect(() => {
     async function loadCastsList() {
       try {
-          const cast = await fetchMoviesCastById(movieId);
-       
+        const cast = await fetchMoviesCastById(movieId);
 
         setCastsList(cast);
       } catch (error) {
@@ -23,7 +21,6 @@ import { CastList } from './Cast-styled';
     loadCastsList();
   }, [movieId]);
 
-
   return (
     <div>
       <CastList>
@@ -31,7 +28,12 @@ import { CastList } from './Cast-styled';
           const { name, character, profile_path } = item;
           return (
             <li key={item.id}>
-              <img src={`https://image.tmdb.org/t/p/w500${profile_path}`} alt="Face" width="100px" height="150px"/>
+              <img
+                src={`https://image.tmdb.org/t/p/w500${profile_path}`}
+                alt="Face"
+                width="100px"
+                height="150px"
+              />
               <p>{name}</p>
               <p>Character:{character}</p>
             </li>
@@ -40,6 +42,4 @@ import { CastList } from './Cast-styled';
       </CastList>
     </div>
   );
-};
-
-
+}

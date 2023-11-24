@@ -6,7 +6,7 @@ import { ReviewList } from './Reviews-styled';
 import { Author } from './Reviews-styled';
 import { Text } from './Reviews-styled';
 
-const Reviews = () => {
+export default function Reviews() {
   const [reviewText, setReviews] = useState([]);
   const { movieId } = useParams();
 
@@ -40,6 +40,4 @@ const Reviews = () => {
       )}
     </div>
   );
-};
-
-export default Reviews;
+}
