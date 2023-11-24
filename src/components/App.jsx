@@ -1,10 +1,4 @@
-import {
-  Routes,
-  Route,
-  NavLink,
-  useNavigate,
-  useLocation,
-} from 'react-router-dom';
+import { Routes, Route, NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import { Header } from './Header-styled';
 import { Suspense, lazy } from 'react';
@@ -24,9 +18,6 @@ const Link = styled(NavLink)`
 `;
 
 export const App = () => {
- 
-  const location = useLocation();
-
   return (
     <div>
       <Header>
@@ -35,8 +26,6 @@ export const App = () => {
           <Link to="/movies">Movie</Link>
         </nav>
       </Header>
-
- 
 
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
