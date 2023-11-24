@@ -1,15 +1,20 @@
-import { Routes, Route, NavLink, useNavigate } from 'react-router-dom';
+import {
+  Routes,
+  Route,
+  NavLink,
+  useNavigate,
+  useLocation,
+} from 'react-router-dom';
 import styled from 'styled-components';
 import { Header } from './Header-styled';
 import { Suspense, lazy } from 'react';
-
 
 const HomePage = lazy(() => import('pages/HomePage'));
 const MoviePage = lazy(() => import('pages/MoviePage'));
 const MovieDetails = lazy(() => import('pages/moviedetails/MovieDetails'));
 const Cast = lazy(() => import('pages/cast/Cast'));
 const Reviews = lazy(() => import('pages/reviews/Reviews'));
-const NotFoundPage = lazy(() => import('pages/NotFoundPage'))
+const NotFoundPage = lazy(() => import('pages/NotFoundPage'));
 
 const Link = styled(NavLink)`
   &.active {
@@ -20,6 +25,7 @@ const Link = styled(NavLink)`
 
 export const App = () => {
   const navigate = useNavigate();
+  const location = useLocation();
 
   return (
     <div>
@@ -30,7 +36,9 @@ export const App = () => {
         </nav>
       </Header>
 
-      <button onClick={() => navigate(-1)}>Go back</button>
+      {location.pathname !== '/' && (
+        <button onClick={() => navigate(-1)}>Go back</button>
+      )}
 
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>

@@ -9,7 +9,6 @@ import { Text } from './Reviews-styled';
 const Reviews = () => {
   const [reviewText, setReviews] = useState([]);
   const { movieId } = useParams();
-  console.log('reviews', movieId);
 
   useEffect(() => {
     async function loadReviews() {
@@ -23,7 +22,6 @@ const Reviews = () => {
 
     loadReviews();
   }, [movieId]);
-  console.log(reviewText);
 
   return (
     <div>

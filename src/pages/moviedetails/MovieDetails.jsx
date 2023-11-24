@@ -1,16 +1,16 @@
 import { useEffect, useState } from 'react';
 import Notiflix from 'notiflix';
 import { fetchMoviesDetailsById } from '../../components/api';
-import { DetailsContainer } from '../MovieDetails-styled';
-import { AdditionalContainer } from '../MovieDetails-styled';
-import { ListOfDetails } from '../MovieDetails-styled';
-import { ListOfGenres } from '../MovieDetails-styled';
+import { DetailsContainer } from './MovieDetails-styled';
+import { AdditionalContainer } from './MovieDetails-styled';
+import { ListOfDetails } from './MovieDetails-styled';
+import { ListOfGenres } from './MovieDetails-styled';
 import { Outlet, Link, useParams } from 'react-router-dom';
 
 export default function MovieDetails() {
   const [movieDetails, setMovieDetails] = useState({});
   const { movieId } = useParams();
-  console.log(movieId);
+ 
 
   useEffect(() => {
     async function loadMovieDetails() {
@@ -23,9 +23,15 @@ export default function MovieDetails() {
     }
     loadMovieDetails();
   }, [movieId]);
-  console.log(movieDetails);
+ 
 
   const { genres, title, overview, popularity, poster_path } = movieDetails;
+
+  if (!poster_path) {
+    
+    return <div>...Loading</div>
+    
+  }
 
   return (
     <div>
@@ -44,7 +50,7 @@ export default function MovieDetails() {
           <h3>Genres</h3>
           <ListOfGenres>
             {genres?.map(item => (
-              <li>{item.name}</li>
+              <li key={item.id}>{item.name}</li>
             ))}
           </ListOfGenres>
         </ListOfDetails>

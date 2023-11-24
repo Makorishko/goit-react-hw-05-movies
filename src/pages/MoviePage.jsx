@@ -12,7 +12,7 @@ export default function MoviePage() {
     const value = e.target[0].value;
     setMoviesList([]);
       setValue(value);
-      console.log(value);
+   
   };
 
   useEffect(() => {
@@ -28,7 +28,7 @@ export default function MoviePage() {
       
   }, [value]);
     
-  console.log(moviesList)
+
 
   return (
     <div>

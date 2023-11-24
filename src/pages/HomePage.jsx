@@ -18,7 +18,7 @@ export default function HomePage() {
     loadTrendingMovies();
   }, []);
     
-    console.log(movieItems)
+   
 
   return (
     <div>
