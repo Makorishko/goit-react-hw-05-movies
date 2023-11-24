@@ -10,7 +10,6 @@ import { Outlet, Link, useParams } from 'react-router-dom';
 export default function MovieDetails() {
   const [movieDetails, setMovieDetails] = useState({});
   const { movieId } = useParams();
- 
 
   useEffect(() => {
     async function loadMovieDetails() {
@@ -23,18 +22,18 @@ export default function MovieDetails() {
     }
     loadMovieDetails();
   }, [movieId]);
- 
 
   const { genres, title, overview, popularity, poster_path } = movieDetails;
 
   if (!poster_path) {
-    
-    return <div>...Loading</div>
-    
+    return <div>...Loading</div>;
   }
 
   return (
     <div>
+      <button>
+        <Link to="/">Go back</Link>
+      </button>
       <DetailsContainer>
         <img
           src={`https://image.tmdb.org/t/p/w500${poster_path}`}
@@ -59,11 +58,11 @@ export default function MovieDetails() {
       <span>Additional information</span>
       <AdditionalContainer>
         <li>
-          <Link to={`/movies/${movieId}/cast`}>Cast</Link>
+          <Link to={`cast`}>Cast</Link>
         </li>
 
         <li>
-          <Link to={`/movies/${movieId}/reviews`}>Reviews</Link>
+          <Link to={`reviews`}>Reviews</Link>
         </li>
       </AdditionalContainer>
       <Outlet />

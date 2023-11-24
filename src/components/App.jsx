@@ -24,7 +24,7 @@ const Link = styled(NavLink)`
 `;
 
 export const App = () => {
-  const navigate = useNavigate();
+ 
   const location = useLocation();
 
   return (
@@ -36,9 +36,7 @@ export const App = () => {
         </nav>
       </Header>
 
-      {location.pathname !== '/' && (
-        <button onClick={() => navigate(-1)}>Go back</button>
-      )}
+ 
 
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>

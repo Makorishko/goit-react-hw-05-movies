@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { fetchMoviesByValue } from '../components/api';
 import { MovieList } from '../components/MovieList';
 import Notiflix from 'notiflix';
+import { Link } from 'react-router-dom';
 
 export default function MoviePage() {
   const [moviesList, setMoviesList] = useState([]);
@@ -32,6 +33,9 @@ export default function MoviePage() {
 
   return (
     <div>
+  <button>
+        <Link to="/">Go back</Link>
+      </button>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
