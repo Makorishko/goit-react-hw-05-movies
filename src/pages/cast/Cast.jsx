@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { fetchMoviesCastById } from '../components/api';
+import { fetchMoviesCastById } from '../../components/api';
 import Notiflix from 'notiflix';
 import { useParams } from 'react-router-dom';
 import { CastList } from './Cast-styled';

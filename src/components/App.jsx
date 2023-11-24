@@ -6,9 +6,9 @@ import { Suspense, lazy } from 'react';
 
 const HomePage = lazy(() => import('pages/HomePage'));
 const MoviePage = lazy(() => import('pages/MoviePage'));
-const MovieDetails = lazy(() => import('pages/MovieDetails'));
-const Cast = lazy(() => import('pages/Cast'));
-const Reviews = lazy(() => import('pages/Reviews'));
+const MovieDetails = lazy(() => import('pages/moviedetails/MovieDetails'));
+const Cast = lazy(() => import('pages/cast/Cast'));
+const Reviews = lazy(() => import('pages/reviews/Reviews'));
 const NotFoundPage = lazy(() => import('pages/NotFoundPage'))
 
 const Link = styled(NavLink)`

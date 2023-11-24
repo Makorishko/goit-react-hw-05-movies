@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { fetchMoviesReviewsById } from '../components/api';
+import { fetchMoviesReviewsById } from '../../components/api';
 import Notiflix from 'notiflix';
 import { useParams } from 'react-router-dom';
 import { ReviewList } from './Reviews-styled';

@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import Notiflix from 'notiflix';
-import { fetchMoviesDetailsById } from '../components/api';
-import { DetailsContainer } from '../pages/MovieDetails-styled';
-import { AdditionalContainer } from '../pages/MovieDetails-styled';
-import { ListOfDetails } from '../pages/MovieDetails-styled';
-import { ListOfGenres } from '../pages/MovieDetails-styled';
+import { fetchMoviesDetailsById } from '../../components/api';
+import { DetailsContainer } from '../MovieDetails-styled';
+import { AdditionalContainer } from '../MovieDetails-styled';
+import { ListOfDetails } from '../MovieDetails-styled';
+import { ListOfGenres } from '../MovieDetails-styled';
 import { Outlet, Link, useParams } from 'react-router-dom';
 
 export default function MovieDetails() {
