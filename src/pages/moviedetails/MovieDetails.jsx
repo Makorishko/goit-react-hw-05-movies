@@ -5,11 +5,15 @@ import { DetailsContainer } from './MovieDetails-styled';
 import { AdditionalContainer } from './MovieDetails-styled';
 import { ListOfDetails } from './MovieDetails-styled';
 import { ListOfGenres } from './MovieDetails-styled';
-import { Outlet, Link, useParams } from 'react-router-dom';
+import { Outlet, Link, useParams, useLocation } from 'react-router-dom';
+
+const defaultImage =
+  'https://cdn.vectorstock.com/i/preview-1x/65/30/default-image-icon-missing-picture-page-vector-40546530.jpg';
 
 export default function MovieDetails() {
   const [movieDetails, setMovieDetails] = useState({});
   const { movieId } = useParams();
+  const location = useLocation();
 
   useEffect(() => {
     async function loadMovieDetails() {
@@ -25,18 +29,18 @@ export default function MovieDetails() {
 
   const { genres, title, overview, popularity, poster_path } = movieDetails;
 
-  if (!poster_path) {
-    return <div>...Loading</div>;
-  }
-
   return (
     <div>
       <button>
-        <Link to="/">Go back</Link>
+        <Link to={location.state?.from || '/'}>Go back</Link>
       </button>
       <DetailsContainer>
         <img
-          src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+          src={
+            poster_path
+              ? `https://image.tmdb.org/t/p/w500${poster_path}`
+              : defaultImage
+          }
           alt="Poster"
           width="280px"
           height="400px"

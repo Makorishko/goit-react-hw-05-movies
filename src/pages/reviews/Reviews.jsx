@@ -29,7 +29,7 @@ export default function Reviews() {
         <ReviewList>
           {' '}
           {reviewText.map(item => (
-            <li>
+            <li key={item.id}>
               <Author>Author: {item.author}</Author>
               <Text>{item.content}</Text>
             </li>

@@ -4,6 +4,9 @@ import Notiflix from 'notiflix';
 import { useParams } from 'react-router-dom';
 import { CastList } from './Cast-styled';
 
+const defaultImage =
+  'https://cdn.vectorstock.com/i/preview-1x/65/30/default-image-icon-missing-picture-page-vector-40546530.jpg';
+
 export default function Cast() {
   const [castsList, setCastsList] = useState([]);
   const { movieId } = useParams();
@@ -29,7 +32,11 @@ export default function Cast() {
           return (
             <li key={item.id}>
               <img
-                src={`https://image.tmdb.org/t/p/w500${profile_path}`}
+                src={
+                  profile_path
+                    ? `https://image.tmdb.org/t/p/w500${profile_path}`
+                    : defaultImage
+                }
                 alt="Face"
                 width="100px"
                 height="150px"

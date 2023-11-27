@@ -2,15 +2,20 @@ import { useEffect, useState } from 'react';
 import { fetchMoviesByValue } from '../components/api';
 import { MovieList } from '../components/MovieList';
 import Notiflix from 'notiflix';
-import { Link, useSearchParams, useLocation } from 'react-router-dom';
-
-import { SearchForm } from '../components/SearchForm';
+import { Link, useLocation } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 
 export default function MoviePage() {
   const [moviesList, setMoviesList] = useState([]);
-  const [searchParams] = useSearchParams('value');
-  const value = searchParams.get('value') ?? '';
+  const [value, setValue] = useState('');
   const location = useLocation();
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    const value = e.target[0].value;
+    setMoviesList([]);
+    setValue(value);
+  };
 
   useEffect(() => {
     async function loadOfMovies() {
@@ -29,7 +34,15 @@ export default function MoviePage() {
       <button>
         <Link to={location.state?.from || '/'}>Go back</Link>
       </button>
-      <SearchForm />
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          autoComplete="off"
+          autoFocus
+          placeholder="Search movies"
+        />
+        <button type="submit">Search</button>
+      </form>
 
       <MovieList movies={moviesList} />
     </div>
